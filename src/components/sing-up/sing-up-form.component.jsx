@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-} from '../../../utils/firebase/firebase.utils';
+} from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
 import './sing-up-form.styles.scss';
-import Button from '../../button/button.component';
-
+import Button from '../button/button.component';
 const defaultFormFields = {
   displayName: '',
   email: '',

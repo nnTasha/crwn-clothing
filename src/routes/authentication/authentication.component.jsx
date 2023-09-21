@@ -1,5 +1,5 @@
-import SignInForm from '../../components/category-item/sign-in/sign-in-form.component';
-import SignUpFrom from '../../components/category-item/sing-up/sing-up-form.component';
+import SignInForm from '../../components/sign-in/sign-in-form.component';
+import SignUpFrom from '../../components/sing-up/sing-up-form.component';
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
