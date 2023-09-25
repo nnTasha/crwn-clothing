@@ -1,41 +1,48 @@
-import { Link, Outlet } from 'react-router-dom';
-import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
-import { UserContext } from '../../contexts/user.context';
-import { useContext } from 'react';
+import { Fragment, useContext } from 'react';
+import { Outlet } from 'react-router-dom';
+
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
+
+import { UserContext } from '../../contexts/user.context';
 import { CartContext } from '../../contexts/cart.context';
-import './navigation.styles.scss';
+
+import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
+
+import {
+  NavigationContainer,
+  LogoContainer,
+  NavLinks,
+  NavLink,
+} from './navigation.styles';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const { isCartOpen } = useContext(CartContext);
 
   return (
-    <>
-      <div className="navigation">
-        <Link className="logo-container " to="/">
-          <CrownLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            SHOP
-          </Link>
+    <Fragment>
+      <NavigationContainer>
+        <LogoContainer to="/">
+          <CrwnLogo />
+        </LogoContainer>
+        <NavLinks>
+          <NavLink to="/shop">SHOP</NavLink>
+
           {currentUser ? (
-            <span className="nav-link" onClick={''}>
+            <NavLink as="span" onClick={signOutUser}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/auth">
-              SIGN IN
-            </Link>
+            <NavLink to="/auth">SIGN IN</NavLink>
           )}
-        </div>
-        <CartIcon />
-      </div>
-      {isCartOpen && <CartDropdown />}
+          <CartIcon />
+        </NavLinks>
+        {isCartOpen && <CartDropdown />}
+      </NavigationContainer>
       <Outlet />
-    </>
+    </Fragment>
   );
 };
 
