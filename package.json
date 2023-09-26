@@ -10,7 +10,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
+    "sass-loader": "^13.3.2",
     "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },
@@ -40,6 +41,6 @@
   },
   "devDependencies": {
     "sass": "^1.67.0",
-    "sass-loader": "^13.3.2"
+    "webpack": "^5.88.2"
   }
 }
